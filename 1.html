@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SpaceSea</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0b0616;
+      color: white;
+    }
+
+    /* ================= NAVBAR ================= */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      background: #111;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+.connect {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: 2px solid #6f7cff;
+  background: transparent;
+  color: #6f7cff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.4s ease;
+}
+
+.connect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: #6f7cff;
+  z-index: -1;
+  transition: width 0.4s ease;
+}
+
+.connect:hover {
+  color: #000;
+}
+
+.connect:hover::before {
+  width: 100%;
+}
+
+
+    /* ================= HERO ================= */
+    .hero {
+      height: 633px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image {
+      height: 100%;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      transition: background-image 0.8s ease-in-out;
+    }
+
+    /* Overlay */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 30px;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.7),
+        rgba(0,0,0,0)
+      );
+    }
+
+    .hero-price {
+      font-size: 40px;
+      font-weight: bold;
+      background: rgba(0,0,0,0.6);
+      padding: 10px 14px;
+      border-radius: 20px;
+      font-family: 'Courier New', Courier, monospace;
+
+    }
+
+    .hero-title {
+      font-size: 60px;
+      font-weight: bold;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    /* Dots */
+    .dots {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .dots span {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      background: white;
+      border-radius: 50%;
+      margin: 0 5px;
+      opacity: 0.4;
+    }
+
+    .dots .active {
+      opacity: 1;
+      background: #6f7cff;
+    }
+
+    /* ================= SECTION ================= */
+    .section {
+      padding: 20px;
+    }
+
+    .section h2 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .slider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .arrow {
+      background: #6f7cff;
+      border: none;
+      color: white;
+      font-size: 20px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .cards {
+      display: flex;
+      gap: 15px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 10px 0;
+      width: 100%;
+    }
+
+    .cards::-webkit-scrollbar {
+      display: none;
+    }
+
+.card {
+  min-width: 160px;
+  height: 200px;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+  background: #1a102e;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* Image fills entire card */
+.card .img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Text overlay */
+.card p {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.8),
+    rgba(0,0,0,0)
+  );
+}
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div>👤</div>
+    <div class="logo">SpaceSea</div>
+    <button class="connect">Connect</button>
+  </header>
+
+  <!-- HERO CAROUSEL -->
+  <section class="hero">
+    <div class="hero-image" id="heroImage">
+      <div class="hero-overlay">
+        <div class="hero-price" id="heroPrice">2.45 ETH</div>
+        <div class="hero-title" id="heroTitle">Orbit Earth NFT</div>
+      </div>
+    </div>
+
+    <div class="dots">
+      <span class="active"></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </section>
+
+  <!-- PLANETS SECTION -->
+  <section class="section">
+    <h2>Planets</h2>
+
+    <div class="slider">
+      <button class="arrow left">‹</button>
+
+      <div class="cards">
+        <div class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1614728263952-84ea256f9679')"></div>
+          <p>Saturn NFT</p>
+        </div>
+
+        <div class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1454789548928-9efd52dc4031')"></div>
+          <p>Jupiter NFT</p>
+        </div>
+
+        <div class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1660786254519-e899d4e2e405?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
+          <p>Mars NFT</p>
+        </div>
+
+        <div class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1679329614246-f099ba78c6aa?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
+          <p>Galaxy NFT</p>
+        </div>
+        <div class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1762895158802-507fb6d7aa7e?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
+          <p>Saturn NFT</p>
+        </div>
+
+        <div class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1654859869130-fd0a2aa5539b?q=80&w=1228&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
+          <p>Jupiter NFT</p>
+        </div>
+
+        <div class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1744932153267-1ac600945f01?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
+          <p>Mars NFT</p>
+        </div>
+
+        <div class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1446776709462-d6b525c57bd3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
+          <p>Galaxy NFT</p>
+        </div>
+        <div class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1564053051381-5cb91813736b?q=80&w=910&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
+          <p>Saturn NFT</p>
+        </div>
+
+        <div class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1454789548928-9efd52dc4031')"></div>
+          <p>Jupiter NFT</p>
+        </div>
+
+        <div class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1620539369497-87f166305d12?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
+          <p>Mars NFT</p>
+        </div>
+
+        <div class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1710326576928-8d2c76bba33d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
+          <p>Galaxy NFT</p>
+        </div>
+      </div>
+
+      <button class="arrow right">›</button>
+    </div>
+  </section>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    /* Slider arrows */
+    document.querySelectorAll(".slider").forEach(slider => {
+      const cards = slider.querySelector(".cards");
+      slider.querySelector(".left").onclick = () => cards.scrollLeft -= 300;
+      slider.querySelector(".right").onclick = () => cards.scrollLeft += 300;
+    });
+
+    /* Hero carousel data */
+    const heroData = [
+      {
+        img: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa",
+        title: "Orbit Earth NFT",
+        price: "2.45 ETH"
+      },
+      {
+        img: "https://images.unsplash.com/photo-1614728263952-84ea256f9679",
+        title: "Saturn Rings NFT",
+        price: "3.10 ETH"
+      },
+      {
+        img: "https://images.unsplash.com/photo-1454789548928-9efd52dc4031",
+        title: "Jupiter Storm NFT",
+        price: "1.95 ETH"
+      },
+      {
+        img: "https://images.unsplash.com/photo-1732633553684-b18a43a48d3d?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        title: "Mars Surface NFT",
+        price: "1.20 ETH"
+      },
+      {
+        img: "https://images.unsplash.com/photo-1641800625222-26d09b9e6d03?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        title: "Deep Space NFT",
+        price: "4.00 ETH"
+      }
+    ];
+
+    const heroImage = document.getElementById("heroImage");
+    const heroTitle = document.getElementById("heroTitle");
+    const heroPrice = document.getElementById("heroPrice");
+    const dots = document.querySelectorAll(".dots span");
+
+    let current = 0;
+
+    function updateHero() {
+      heroImage.style.backgroundImage = `url('${heroData[current].img}')`;
+      heroTitle.textContent = heroData[current].title;
+      heroPrice.textContent = heroData[current].price;
+
+      dots.forEach(dot => dot.classList.remove("active"));
+      dots[current].classList.add("active");
+    }
+
+    updateHero();
+
+    setInterval(() => {
+      current = (current + 1) % heroData.length;
+      updateHero();
+    }, 30000);
+  </script>
+
+</body>
+</html>

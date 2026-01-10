@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NFT Detail</title>
+  <link rel="stylesheet" href="nft.css" />
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #0b0d17;
+  color: #fff;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background: #111;
+}
+
+.connect {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: 2px solid #6f7cff;
+  background: transparent;
+  color: #6f7cff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.4s ease;
+}
+
+.connect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: #6f7cff;
+  z-index: -1;
+  transition: width 0.4s ease;
+}
+
+.connect:hover {
+  color: #000;
+}
+
+.connect:hover::before {
+  width: 100%;
+}
+
+/* NFT Layout */
+.nft-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 50px;
+}
+
+.nft-image img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* NFT Info */
+.nft-info {
+  background: #151726;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.description {
+  margin: 15px 0;
+  color: #ccc;
+}
+
+.traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0 20px;
+}
+
+.traits span {
+  background: #222;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+/* Price */
+.price-box {
+  margin-top: 20px;
+}
+
+.price {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.price span {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+}
+
+.buy {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: 2px solid #6f7cff;
+  background: transparent;
+  color: #6f7cff;
+  padding: 12px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.4s ease;
+}
+
+.buy::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: #6f7cff;
+  z-index: -1;
+  transition: width 0.4s ease;
+}
+
+.buy:hover {
+  color: #000;
+}
+
+.buy:hover::before {
+  width: 100%;
+}
+
+.cart {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: 2px solid #6f7cff;
+  background: transparent;
+  color: #6f7cff;
+  padding: 12px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.4s ease;
+}
+
+.cart::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: #6f7cff;
+  z-index: -1;
+  transition: width 0.4s ease;
+}
+
+.cart:hover {
+  color: #000;
+}
+
+.cart:hover::before {
+  width: 100%;
+}
+
+/* Related */
+.related {
+  padding: 40px 50px;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+/* Base card */
+.related-card {
+  height: 160px;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect */
+.related-card:hover {
+  transform: scale(1.05);
+}
+
+/* Images injected via CSS */
+.related-card:nth-child(1) {
+  background-image: url("https://images.unsplash.com/photo-1508970057347-0524a45ebdff?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+}
+
+.related-card:nth-child(2) {
+  background-image: url("https://images.unsplash.com/photo-1687380866737-7124a5e648fd?q=80&w=1046&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+}
+
+.related-card:nth-child(3) {
+  background-image: url("https://images.unsplash.com/photo-1742738731867-8ada08a9a37d?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+}
+
+.related-card:nth-child(4) {
+  background-image: url("https://images.unsplash.com/photo-1738774007792-5a153f8c4ad2?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+}
+
+.related-card:nth-child(5) {
+  background-image: url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa");
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <h2>🌌 SpaceNFT</h2>
+    <button class="connect">Connect Wallet</button>
+  </header>
+
+  <!-- NFT Details -->
+  <main class="nft-container">
+
+    <!-- NFT Image -->
+    <div class="nft-image">
+      <img src="https://images.unsplash.com/photo-1614728263952-84ea256f9679" alt="NFT">
+    </div>
+
+    <!-- NFT Info -->
+    <div class="nft-info">
+      <div class="title-row">
+        <h1>Planet X #045</h1>
+        <span>⭐</span>
+      </div>
+
+      <p class="description">
+        A rare celestial NFT discovered beyond the Kuiper Belt.
+        Generated uniquely from cosmic data.
+      </p>
+
+      <h4>Traits</h4>
+      <div class="traits">
+        <span>Nitrogen Gas</span>
+        <span>Mercury Rain</span>
+        <span>Extraterrestrial Life</span>
+        <span>Planetary Rings</span>
+      </div>
+
+      <div class="price-box">
+        <p class="price">0.00 ETH <span>($200)</span></p>
+        <div class="actions">
+          <button class="buy">Buy Now</button>
+          <button class="cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Related NFTs -->
+<section class="related">
+  <h2>Planets</h2>
+
+  <div class="related-grid">
+    <div class="related-card"></div>
+    <div class="related-card"></div>
+    <div class="related-card"></div>
+    <div class="related-card"></div>
+    <div class="related-card"></div>
+  </div>
+</section>
+
+
+</body>
+</html>
