@@ -189,6 +189,7 @@ body {
   z-index: 2;
   font-size: 14px;
   font-weight: bold;
+  font-family: "Pixelify Sans", sans-serif;
 }
 
 /* ===== MODAL OVERLAY ===== */
@@ -310,6 +311,29 @@ body {
 .transfer-btn:hover::before {
   width: 100%;
 }
+
+.transfer-box {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.transfer-box label {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.transfer-box input {
+  background: #0b0616;
+  border: 1px solid #6f7cff;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+}
+
+
 /* .sell-btn,
 .transfer-btn {
   padding: 10px 20px;
@@ -439,7 +463,10 @@ body {
         <p class="modal-desc">
           Description goes here. This NFT is a unique cosmic asset Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam doloremque natus molestiae ea possimus perferendis error assumenda eius pariatur aspernatur?
         </p>
-
+        <div class="transfer-box" id="transferBox">
+           <label>Transfer to username</label>
+            <input type="text" placeholder="Enter username" />
+        </div>
         <div class="modal-actions">
           <button class="sell-btn">Sell</button>
           <button class="transfer-btn">Transfer</button>
@@ -455,7 +482,8 @@ body {
   const modalOverlay = document.getElementById("modalOverlay");
   const modalImg = document.getElementById("modalImg");
   const modalTitle = document.getElementById("modalTitle");
-  // Count total NFTs
+  const transferBtn = document.querySelector(".transfer-btn");
+const transferBox = document.getElementById("transferBox");
   const nftCountEl = document.getElementById("nftCount");
 
   nftCountEl.textContent = cards.length;
@@ -480,6 +508,12 @@ body {
       modalOverlay.style.display = "none";
     }
   });
+
+  transferBtn.addEventListener("click", () => {
+  transferBox.style.display =
+    transferBox.style.display === "flex" ? "none" : "flex";
+});
+
 </script>
 
 </body>
