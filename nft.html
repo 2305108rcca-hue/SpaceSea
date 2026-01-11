@@ -23,11 +23,19 @@ body {
 
 /* Navbar */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 40px;
-  background: #111;
-}
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      background: #111;
+    }
+
+    .logo {
+      font-family: "Pixelify Sans", sans-serif;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
 
 .connect {
   position: relative;
@@ -257,8 +265,9 @@ body {
 
   <!-- Navbar -->
   <header class="navbar">
-    <h2>🌌 SpaceNFT</h2>
-    <button class="connect">Connect Wallet</button>
+    <div>👤</div>
+    <div class="logo">SpaceSea</div>
+    <button class="connect">Connect</button>
   </header>
 
   <!-- NFT Details -->
@@ -316,3 +325,4 @@ body {
 
 </body>
 </html>
+
